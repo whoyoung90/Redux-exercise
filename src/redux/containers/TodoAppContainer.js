@@ -3,11 +3,6 @@ import { connect } from "react-redux";
 //   addTodoActionCreator,
 //   removeTodoActionCreator,
 //   removeAllActionCreator,
-// } from "../actions";
-// import {
-//   addTodoActionCreator,
-//   removeTodoActionCreator,
-//   removeAllActionCreator,
 // } from "../ducks/todoDuck";
 import {
   addTodo as addTodoActionCreator,

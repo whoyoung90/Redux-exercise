@@ -1,6 +1,10 @@
 import { createActions, handleActions } from "redux-actions";
 
-// Action Creator를 생성하는 함수
+/**
+ * @description createActions
+ * @param { action type, payload creator function }
+ * Action Creator를 생성하는 함수
+ */
 export const { addTodo, removeTodo, removeAll } = createActions({
   ADD_TODO: (text) => {
     return { text };
@@ -13,17 +17,21 @@ export const { addTodo, removeTodo, removeAll } = createActions({
   },
 });
 
-// Action에 대한 Reducer를 생성하는 함수
+/**
+ * @description handleActions
+ * @param { action type, reducer funtion, initialState }
+ * Action에 대한 Reducer를 생성하는 함수
+ */
 const initialState = [];
 const todoReducer = handleActions(
   {
-    [addTodo]: (state, action) => {
+    ADD_TODO: (state, action) => {
       return state.concat(action.payload.text);
     },
-    [removeTodo]: (state, action) => {
+    REMOVE_TODO: (state, action) => {
       return state.slice(0, -1);
     },
-    [removeAll]: (state, action) => {
+    REMOVE_ALL: (state, action) => {
       return [];
     },
   },
