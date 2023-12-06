@@ -2,7 +2,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 /**
  * Redux-Toolkit에서는 내부적으로 Immer를 사용하므로
- * 항상 새로운 state를 만들어서 리턴할 필요없이, drafted state를 지유롭게 수정하면 된다
+ * 항상 새로운 state를 만들어서 리턴할 필요없이, draft state를 지유롭게 수정하면 된다
  */
 const initialState = [];
 const todoSlice = createSlice({

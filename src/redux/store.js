@@ -8,6 +8,8 @@ import rootReducer from "./reducers";
 //   rootReducer,
 //   composeEnhancers(applyMiddleware(asyncFunctionMiddleware))
 // );
+
+// redux-thunk가 내장되어 있으며, redux-devtools가 자동으로 연동됨
 const store = configureStore({ reducer: rootReducer });
 
 export default store;

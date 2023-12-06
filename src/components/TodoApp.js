@@ -1,19 +1,28 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addTodo as addTodoActionCreator,
+  removeTodo as removeTodoActionCreator,
+  removeAll as removeAllActionCreator,
+} from "../redux/slices/todoSlice";
 
 function TodoApp(props) {
-  /**
-   * 🚩 props를 통해 가져올 수 있는 이유는
-   * TodoApp을 Redux에 connect 시켰으므로 (TodoAppContainer)
-   */
-  const {
-    // Redux state
-    todoItems,
-    // Redux dispatch
-    addTodo,
-    removeTodo,
-    removeAll,
-    triggerAsyncFunction,
-  } = props;
+  // /**
+  //  * 🚩 props를 통해 가져올 수 있는 이유는
+  //  * TodoApp을 Redux에 connect 시켰으므로 (TodoAppContainer)
+  //  */
+  // const {
+  //   // Redux state
+  //   todoItems,
+  //   // Redux dispatch
+  //   addTodo,
+  //   removeTodo,
+  //   removeAll,
+  //   triggerAsyncFunction,
+  // } = props;
+
+  const todoItems = useSelector((state) => [...state.todo]);
+  const dispatch = useDispatch();
 
   const [newTodo, setNewTodo] = useState("");
 
@@ -35,18 +44,26 @@ function TodoApp(props) {
         />
         <button
           onClick={() => {
-            addTodo(newTodo);
+            // addTodo(newTodo);
+            dispatch(addTodoActionCreator(newTodo));
             setNewTodo("");
           }}
         >
           할 일 추가
         </button>
-        <button onClick={removeTodo}>할 일 삭제</button>
-        <button onClick={removeAll}>모두 삭제</button>
+        {/* <button onClick={removeTodo}> */}
+        <button onClick={() => dispatch(removeTodoActionCreator())}>
+          할 일 삭제
+        </button>
+        {/* <button onClick={removeAll}> */}
+        <button onClick={() => dispatch(removeAllActionCreator())}>
+          모두 삭제
+        </button>
 
         <button
           onClick={() => {
-            triggerAsyncFunction((dispatch, getState) => {
+            // 이제 asyncFunctionMiddleware가 아닌 dispatch 함수를 사용해서 "thunk를 직접 만들고" dispatch
+            dispatch((dispatch, getState) => {
               console.log("비동기 함수 실행", getState());
 
               new Promise((resolve, reject) => {
