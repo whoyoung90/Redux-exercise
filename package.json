@@ -2,6 +2,12 @@
   "name": "redux-exercise-1",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",
@@ -11,12 +17,6 @@
     "redux": "^4.2.1",
     "redux-actions": "^3.0.0",
     "redux-thunk": "^2.4.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
