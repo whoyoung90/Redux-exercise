@@ -62,7 +62,8 @@ function TodoApp(props) {
 
         <button
           onClick={() => {
-            // 이제 asyncFunctionMiddleware가 아닌 dispatch 함수를 사용해서 "thunk를 직접 만들고" dispatch
+            // action이 함수: async
+            // 기존 asyncThunkMiddleware -> dispatch 함수를 사용해서 "thunk를 직접 만들고" dispatch
             dispatch((dispatch, getState) => {
               console.log("비동기 함수 실행", getState());
 
