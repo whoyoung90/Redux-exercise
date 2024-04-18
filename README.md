@@ -1,5 +1,11 @@
 # Redux-exercise
 
+```bash
+# version
+"@reduxjs/toolkit": "^2.2.3",
+"react": "^18.2.0",
+```
+
 ## 🚩 TodoList
 
 - Redux 소개

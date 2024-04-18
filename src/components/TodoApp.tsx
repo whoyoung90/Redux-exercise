@@ -6,7 +6,7 @@ import {
   removeAll as removeAllActionCreator,
 } from "../redux/slices/todoSlice";
 
-function TodoApp(props) {
+function TodoApp() {
   // /**
   //  * 🚩 props를 통해 가져올 수 있는 이유는
   //  * TodoApp을 Redux에 connect 시켰으므로 (TodoAppContainer)
@@ -21,7 +21,7 @@ function TodoApp(props) {
   //   triggerAsyncFunction,
   // } = props;
 
-  const todoItems = useSelector((state) => [...state.todo]);
+  const todoItems = useSelector(({ todo }) => todo);
   const dispatch = useDispatch();
 
   const [newTodo, setNewTodo] = useState("");
@@ -30,8 +30,8 @@ function TodoApp(props) {
     <div>
       <h3>오늘 할 일</h3>
       <ul>
-        {todoItems.map((todoItem, index) => {
-          return <li key={index}>{todoItem}</li>;
+        {todoItems.map((todoItem: string, idx: number) => {
+          return <li key={idx}>{todoItem}</li>;
         })}
       </ul>
 
@@ -44,23 +44,20 @@ function TodoApp(props) {
         />
         <button
           onClick={() => {
-            // addTodo(newTodo);
             dispatch(addTodoActionCreator(newTodo));
             setNewTodo("");
           }}
         >
           할 일 추가
         </button>
-        {/* <button onClick={removeTodo}> */}
         <button onClick={() => dispatch(removeTodoActionCreator())}>
           할 일 삭제
         </button>
-        {/* <button onClick={removeAll}> */}
         <button onClick={() => dispatch(removeAllActionCreator())}>
           모두 삭제
         </button>
 
-        <button
+        {/* <button
           onClick={() => {
             // action이 함수: async
             // 기존 asyncThunkMiddleware -> dispatch 함수를 사용해서 "thunk를 직접 만들고" dispatch
@@ -80,7 +77,7 @@ function TodoApp(props) {
           }}
         >
           비동기 함수 테스트
-        </button>
+        </button> */}
       </div>
     </div>
   );

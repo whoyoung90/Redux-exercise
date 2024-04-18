@@ -6,7 +6,7 @@ import { createActions, handleActions } from "redux-actions";
  * Action Creator를 생성하는 함수
  */
 export const { addTodo, removeTodo, removeAll } = createActions({
-  ADD_TODO: (text) => {
+  ADD_TODO: (text: string) => {
     return { text };
   },
   REMOVE_TODO: () => {
@@ -22,10 +22,10 @@ export const { addTodo, removeTodo, removeAll } = createActions({
  * @param { action type, reducer funtion, initialState }
  * Action에 대한 Reducer를 생성하는 함수
  */
-const initialState = [];
+const initialState: string[] = [];
 const todoReducer = handleActions(
   {
-    ADD_TODO: (state, action) => {
+    ADD_TODO: (state, action: any) => {
       return state.concat(action.payload.text);
     },
     REMOVE_TODO: (state, action) => {
